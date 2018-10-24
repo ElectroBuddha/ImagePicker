@@ -168,8 +168,8 @@ open class ImagePickerController: UIViewController {
 
     applyOrientationTransforms()
 
-    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,
-                                    bottomContainer);
+    UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged,
+                         argument: bottomContainer);
   }
 
   open func resetAssets() {
@@ -259,7 +259,7 @@ open class ImagePickerController: UIViewController {
 
     NotificationCenter.default.addObserver(self,
                                            selector: #selector(handleRotation(_:)),
-                                           name: NSNotification.Name.UIDeviceOrientationDidChange,
+                                           name: UIDevice.orientationDidChangeNotification,
                                            object: nil)
   }
 
